@@ -67,25 +67,4 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
- */
-
-//list
-// {
-//   head : null,
-//   tail : null
-// }
-
-// //linkedList.addToTail({value : 4, next : null});
-// {
-//   head : { value: 4, next: null },
-//   { value: 5, next: null },
-//   tail : { value: 4, next: null }
-// }
-
-// //linkedList.addToTail({value : 2, next : null});
-// {
-//   head ==> { value: 1, next:  } },
-//   1 : { value: 1, next: 2 },
-//   2 : { value: 2, next: null },
-//   tail ==> { value: 2, next: null }
-// }
+*/
