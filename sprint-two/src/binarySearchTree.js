@@ -84,6 +84,21 @@ bstMethods.contains = function(value) {
 
 //accept a callback => executes cb on every/all value in tree
 bstMethods.depthFirstLog = function(cb) {
+  //execute callback on this.value
+  //if this.left is not null
+    //recursion - execute callback on this.left
+  //if this.right is not null
+    //recursion - execute callback on this.right
+
+  cb(this.value);
+
+  if (this.left !== null) {
+    this.left.depthFirstLog(cb);
+  }
+
+  if (this.right !== null) {
+    this.right.depthFirstLog(cb);
+  }
 
 };
 
