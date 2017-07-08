@@ -9,12 +9,17 @@ HashTable.prototype.insert = function(k, v) {
   // converts index to 32-bit integer
 
   // create a bucket array to store the key/value
-  // if the key index already exists, go with that bucket, otherwise, start another bucket array
+  // if the key index already exists (!== undefined), go with that bucket, otherwise, start another bucket array
   // push the new key value to the bucket array
   // set the object's storage with the index assigned to the bucket
 
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index) || [];
+  for (var i = 0; i < bucket.length; i++) {
+    if (bucket[i][0] === k) {
+      bucket[i][1] = v;
+    }
+  }
   bucket.push([k, v]);
   this._storage.set(index, bucket);
 };
@@ -36,17 +41,19 @@ HashTable.prototype.retrieve = function(k) {
     }
   }
   return null;
-  
+
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
+  var bucket = this._storage.get(index);
+  for (var i = 0; i < bucket.length; i++) {
+    if (bucket[i][0] === k) {
+      bucket.splice(i, 1);
+    }
+  }
+  this._storage.set(index, bucket);
 };
-
-
-var hash = new HashTable();
-hash.insert('Steven', 'Seagal');
-console.log(hash.retrieve('Steven'));
 
 
 /*
